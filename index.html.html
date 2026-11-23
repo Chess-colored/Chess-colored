@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ro"><head><meta charset="utf-8"><title>Șah Colorat</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Șah Colorat"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#76b852"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADZUlEQVR42u3dwU0UYRjH4WGyDUwFW4GJyd492YO0QAVy4MgBKvBiAUsLxpN3E8NWYAM7LXjYZEIIaBZnvvm+931+V5Usy+P/mwEWLo7Hx6617va3zT3m68ub5h5z30lwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAgOwSE4BIenQHAIDsEhOASHqmzjKbi/enjtjz5/+QQHE//4OzmVbJg461+lUtKTUfgtWI6ALJ69qQwT0pNhQvLiWO6jGN5HTwYfGXGU+cgF9tGTwYdb2WXbf/0Gh9l4ud8/x3g+ejJm9AGHshwucPCRBse6Nw7BThbLITicLMlx1PDJqEgni+UQHE4WODRjG78XvsyDbPF5thyCQ3AIDsFxZuN4WP0xbHcDHLIcelO/vv+Aw8kS9kyxHILDmQLHuidLsDMl7HKU9xFPhmPFmZISR8nxmGYjkozgy1HGR8gDJcWxsrSPpzKCzUaKa47lfMSWkeWCdAkf4WUkulsZx8NcFwfb3ZBBRpfkpwkOw7tuvleUTG9nuxsCy+h8nuN/ii0jBY7TbCz0lt9//ACHMhYcx3KzMV1/BB4Py6GUOJaejfDjYTkEx8KFHI+wOMqcKdPJYjnkWDEbLksth9LhKD8bUcfDcigNjrVmI+R4WA7BUbAw4xEKx7pnynSyWA45VsxG4stSy6HoOOqZjUjjYTkEh3vanDhqO1PC3NNaDsXFUedsxLgstRwKiqPm2QgwHpZDcLinTYWj/jOl9Xtay6FwOFqZjWk8WvxNs5ZDsXC0NRvtjoflUCAc91cPjT7XzY2H5dCrXRyPjy44inX66bat/IzKnozCJ4tjRS5IzcabxqOVL7U0cM0Rw8SL1fD71f/SBovV38FqifRkeE8bw5FHRs3vb++Z8l67lW2g2u5iev+B3OVaDsHhcIFDcAgOwSE4BIfgKFzlX8VetNM3EcIhy2E8zp+Ner79uNLlyOajtgOl9mMlj4+nMqp61ULV1xzjeKjzv9SMLKqV0TXxDcZRfxn4syp8pVMzr3gLTKTaF8C193LIruvu9rfNPebryxu3sooTHIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhdX8ABvgPLFQWTf8AAAAASUVORK5CYII="><link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADZUlEQVR42u3dwU0UYRjH4WGyDUwFW4GJyd492YO0QAVy4MgBKvBiAUsLxpN3E8NWYAM7LXjYZEIIaBZnvvm+931+V5Usy+P/mwEWLo7Hx6617va3zT3m68ub5h5z30lwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSHBITgEh+AQHIJDcAgOwSE4BIenQHAIDsEhOASHqmzjKbi/enjtjz5/+QQHE//4OzmVbJg461+lUtKTUfgtWI6ALJ69qQwT0pNhQvLiWO6jGN5HTwYfGXGU+cgF9tGTwYdb2WXbf/0Gh9l4ud8/x3g+ejJm9AGHshwucPCRBse6Nw7BThbLITicLMlx1PDJqEgni+UQHE4WODRjG78XvsyDbPF5thyCQ3AIDsFxZuN4WP0xbHcDHLIcelO/vv+Aw8kS9kyxHILDmQLHuidLsDMl7HKU9xFPhmPFmZISR8nxmGYjkozgy1HGR8gDJcWxsrSPpzKCzUaKa47lfMSWkeWCdAkf4WUkulsZx8NcFwfb3ZBBRpfkpwkOw7tuvleUTG9nuxsCy+h8nuN/ii0jBY7TbCz0lt9//ACHMhYcx3KzMV1/BB4Py6GUOJaejfDjYTkEx8KFHI+wOMqcKdPJYjnkWDEbLksth9LhKD8bUcfDcigNjrVmI+R4WA7BUbAw4xEKx7pnynSyWA45VsxG4stSy6HoOOqZjUjjYTkEh3vanDhqO1PC3NNaDsXFUedsxLgstRwKiqPm2QgwHpZDcLinTYWj/jOl9Xtay6FwOFqZjWk8WvxNs5ZDsXC0NRvtjoflUCAc91cPjT7XzY2H5dCrXRyPjy44inX66bat/IzKnozCJ4tjRS5IzcabxqOVL7U0cM0Rw8SL1fD71f/SBovV38FqifRkeE8bw5FHRs3vb++Z8l67lW2g2u5iev+B3OVaDsHhcIFDcAgOwSE4BIfgKFzlX8VetNM3EcIhy2E8zp+Ner79uNLlyOajtgOl9mMlj4+nMqp61ULV1xzjeKjzv9SMLKqV0TXxDcZRfxn4syp8pVMzr3gLTKTaF8C193LIruvu9rfNPebryxu3sooTHIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhdX8ABvgPLFQWTf8AAAAASUVORK5CYII=">
+<style>
+:root{--l:#eeeed2;--d:#769656;--bg:#e8f5e0;--ac:#4c9a2a;--tx:#1d3a10;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[data-t=albastru]{--l:#dfe9f5;--d:#5b8bc4;--bg:#e3f0ff;--ac:#2f6fd0;--tx:#12305c}
+[data-t=roz]{--l:#fde7ef;--d:#d9769b;--bg:#ffeaf2;--ac:#d6407a;--tx:#5a1631}
+[data-t=portocaliu]{--l:#fff0d2;--d:#e39a3b;--bg:#fff4dc;--ac:#e07b00;--tx:#5a3200}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,sans-serif;display:flex;justify-content:center}
+main{width:100%;max-width:500px;padding:12px}
+.card{background:#fff;border-radius:16px;padding:10px 12px;margin-bottom:10px;box-shadow:0 2px 8px #0002}
+.top{display:flex;align-items:center;gap:10px}.top input{flex:1;min-width:0;border:2px solid var(--d);border-radius:10px;padding:6px 8px;font-size:16px;color:var(--tx)}
+.av{font-size:34px}.coins{font-weight:700;white-space:nowrap}
+#board{display:grid;grid-template-columns:repeat(8,45px);grid-template-rows:repeat(8,45px);width:360px;height:360px;flex:none;margin:0 auto;border-radius:4px;overflow:hidden}
+.sq{display:flex;align-items:center;justify-content:center;width:45px;height:45px;position:relative;user-select:none;cursor:pointer;line-height:1}
+.sq.l{background:var(--l)}.sq.d{background:var(--d)}
+.sq.sel{background:#ffe066!important}.sq.last{box-shadow:inset 0 0 0 100px #ffe06660}.sq.chk{background:#ff6b6b!important}
+.sq.tg::after{content:"";width:28%;height:28%;border-radius:50%;background:#0004;position:absolute}
+.sq.tg.cp::after{width:90%;height:90%;background:none;border:4px solid #0004}
+.pc{width:42px;height:42px;stroke-width:1.6;stroke-linejoin:round;pointer-events:none}.pw{fill:#fff;stroke:#222;--eye:#222}.pk{fill:#4a4a4a;stroke:#111;--eye:#eee}.co{position:absolute;font-size:10px;pointer-events:none}body{overflow-x:auto}main{min-width:384px}#ld{position:fixed;inset:0;z-index:9;background:var(--bg);color:var(--tx);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;transition:opacity .5s;animation:ldx .5s 4.2s forwards}@keyframes ldx{to{opacity:0;visibility:hidden}}@keyframes gr{from{transform:scale(.15)}to{transform:scale(1)}}@keyframes fl{from{width:0}to{width:100%}}#ld svg{width:130px;height:130px;fill:var(--ac);stroke:#1d3a10;stroke-width:1.6;stroke-linejoin:round;transform:scale(.15);animation:gr 2.8s cubic-bezier(.2,.8,.3,1) forwards;filter:drop-shadow(0 8px 6px #0003)}#lb{width:200px;height:10px;background:#fff9;border-radius:6px;overflow:hidden}#lb i{display:block;height:100%;width:0;background:var(--ac);animation:fl 2.8s ease-out forwards}[data-t=negru]{--l:#ededed;--d:#5a5a5a;--bg:#f3f3f3;--ac:#333;--tx:#1a1a1a}[data-t=cafeniu]{--l:#f6e8d8;--d:#8b5a3c;--bg:#f9efe3;--ac:#6e4228;--tx:#3a2012}[data-t=turcoaz]{--l:#e2f6f6;--d:#3a9bb0;--bg:#e8f9f9;--ac:#1f7f95;--tx:#0d3a46}[data-t=rosu]{--l:#fdecec;--d:#c0504d;--bg:#fff0f0;--ac:#b03a37;--tx:#561a18}[data-t=gri]{--l:#eceff3;--d:#8a8f98;--bg:#f2f4f7;--ac:#5c6270;--tx:#252a33}[data-ps=rotund] .pw{fill:url(#gw);stroke:url(#gw);stroke-width:4}[data-ps=rotund] .pk{fill:url(#gk);stroke:url(#gk);stroke-width:4}[data-ps=rotund] .pc{filter:drop-shadow(1px 0 0 #222) drop-shadow(-1px 0 0 #222) drop-shadow(0 1px 0 #222) drop-shadow(0 -1px 0 #222) drop-shadow(0 3px 2px #0005)}[data-ps=pixel] .pc{stroke:none;shape-rendering:crispEdges;filter:drop-shadow(1px 0 0 #222) drop-shadow(-1px 0 0 #222) drop-shadow(0 1px 0 #222) drop-shadow(0 -1px 0 #222)}[data-t=lemn]{--l:#f0d9b5;--d:#b58863;--bg:#f7ecdc;--ac:#8a5a2b;--tx:#3d2512}[data-t=mov]{--l:#ece6f7;--d:#8a6bbf;--bg:#f1ecfa;--ac:#6d4bb0;--tx:#2e1a5c}[data-ps=realist] .pw{fill:url(#gw)}[data-ps=realist] .pk{fill:url(#gk)}[data-ps=realist] .pc{filter:drop-shadow(0 3px 2px #0007)}[data-ps=colorat] .pw{fill:#ffd54a;stroke:#7a5200}[data-ps=colorat] .pk{fill:#3b6fd4;stroke:#0e2a66}.ck{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;box-shadow:0 3px 3px #0006,inset 0 0 0 3px #0002;pointer-events:none}.cw{background:radial-gradient(circle at 35% 30%,#fff,#d6d6d6);color:#b8860b}.cb{background:radial-gradient(circle at 35% 30%,#7a7a7a,#1e1e1e);color:#ffd54a}.av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;flex:none}.hero{text-align:center}.hero h2{margin:4px 0}.big{font-size:46px}
+#st{text-align:center;font-weight:700;margin:10px 0;min-height:1.4em}
+button,select{font:inherit;border-radius:10px;border:2px solid var(--ac);padding:8px 12px;background:#fff;color:var(--tx)}
+button.pr{background:var(--ac);color:#fff}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.th{width:36px;height:36px;border-radius:50%;padding:0}
+details summary{font-weight:700;cursor:pointer}.avs button{font-size:22px;padding:6px 10px}.avs small{display:block;font-size:11px}
+.note{font-size:13px;opacity:.8}
+</style></head><body><svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="p" viewBox="0 0 45 45"><rect x="12" y="36" width="21" height="4" rx="2"/><path d="M18 19h9c0 3 0 4 2 6 2 2 4 5 4 11H12c0-6 2-9 4-11 2-2 2-3 2-6z"/><circle cx="22.5" cy="14" r="5.5"/></symbol>
+<symbol id="r" viewBox="0 0 45 45"><path d="M11 40h23v-5H11zM14 35V20h17v15zM12 20V9h5v3h3.5V9h5v3H29V9h5v11z"/></symbol>
+<symbol id="n" viewBox="0 0 45 45"><path d="M12 40C12 30 16 26 20 22L14 24L10 25L9 22L19 10L20 6L24 8L27 5L28 9C35 12 36 24 34 40Z"/><circle cx="21" cy="14" r="1.4" fill="var(--eye)" stroke="none"/></symbol>
+<symbol id="b" viewBox="0 0 45 45"><path d="M13 40h19v-4c-3-1.5-6-1.5-9.5-1.5S16 34.5 13 36z"/><path d="M18 34c2-2 1-5-2-8-2-3-1-8 6.5-14 7.5 6 8.5 11 6.5 14-3 3-4 6-2 8z"/><circle cx="22.5" cy="8" r="3"/><path d="M19.5 20h6M22.5 17v6" fill="none"/></symbol>
+<symbol id="q" viewBox="0 0 45 45"><path d="M12 40h21v-4H12zM14 36l-3-20 7 8 4.5-12 4.5 12 7-8-3 20z"/><circle cx="11" cy="14" r="2.5"/><circle cx="22.5" cy="8" r="2.5"/><circle cx="34" cy="14" r="2.5"/></symbol>
+<symbol id="k" viewBox="0 0 45 45"><path d="M12 40h21v-4H12zM22.5 15c-9 0-13 5-11 11 .7 3 1.5 6 3 10h16c1.5-4 2.3-7 3-10 2-6-2-11-11-11z"/><path d="M20.500 4h4v3.500H28v4h-3.500V15h-4v-3.500H17v-4h3.500z"/></symbol>
+<linearGradient id="gw" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#b5b5b5"/></linearGradient><linearGradient id="gk" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a7a7a"/><stop offset="1" stop-color="#101010"/></linearGradient></defs></svg><div id="ld"><svg viewBox="0 0 45 45"><use href="#p"/></svg><div id="lb"><i></i></div><b>Se încarcă…</b></div><div id="un" style="display:none;position:fixed;inset:0;z-index:10;background:var(--bg);color:var(--tx);align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:20px;text-align:center"><div class="big">♟️</div><h2>Bun venit!</h2><div>Alege un nume de utilizator</div><input id="un1" maxlength="14" placeholder="Ex: MaestruSah" style="font-size:18px;padding:10px;border:2px solid var(--d);border-radius:10px;text-align:center"><button class="pr" onclick="setUn()">Continuă</button></div><main>
+<div class="card top"><span class="av" id="av"></span><input id="nm" maxlength="14" placeholder="Numele tău"><select id="lg" onchange="setLg(this.value)" style="padding:4px"><option value="ro">Română</option><option value="en">English</option><option value="ru">Русский</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option><option value="tr">Türkçe</option><option value="x" id="lgx" style="display:none">🌍 …</option></select><span class="coins" id="co"></span></div>
+<div id="game" style="display:none"><div id="tr" class="note" style="text-align:center;margin-bottom:6px"></div><div id="board"></div><div id="st"></div><div class="row" style="justify-content:center"><button onclick="show('lobby')">← Meniu</button><button class="pr" onclick="T=null;newGame()">Joc nou</button><button id="nx" class="pr" style="display:none" onclick="nextRound()">Runda următoare ▶</button><button id="nd" style="display:none" onclick="dEnd()">Termină rândul</button></div></div><div id="learn" style="display:none"><div class="card"><h3 id="lt"></h3><div id="lx" style="min-height:96px;font-size:17px;line-height:1.4"></div><div id="lm"></div><div class="row" style="justify-content:space-between"><button onclick="lstep(-1)">←</button><b id="lc"></b><button onclick="lstep(1)">→</button></div><div class="row"><button class="pr" onclick="practice()">Exersează</button><button onclick="show('lobby')">← Meniu</button></div></div></div><div id="lobby"><div class="card hero"><div class="big">♟️</div><h2>Șah Colorat</h2><div class="row" style="justify-content:center"><button id="gc" class="pr" onclick="setGM('chess')">♟️ Șah</button><button id="gd" onclick="setGM('dame')">⚪ Dame</button></div><div class="note">Alege cu cine joci și apasă Joacă</div><div class="row" style="justify-content:center"><button class="pr" onclick="startTour()">🏆 Turneu (4 runde, premiu 300 🪙)</button><button onclick="show('learn')">📚 Învață să joci</button><button id="gl" style="display:none" onclick="gLogin()">🔐 Intră cu Google</button></div></div>
+<div class="card"><div class="row"><select id="mode"><option value="bot">Contra botului</option><option value="loc">2 jucători (același telefon)</option></select>
+<select id="lvl"><option value="1">Bot ușor</option><option value="2">Bot mediu</option><option value="3">Bot greu</option></select></div>
+<button class="pr" onclick="T=null;newGame();show('game')">▶ Joacă</button> <span class="note">Câștigi 50 🪙 la fiecare victorie contra botului.</span></div>
+<div class="card"><details><summary>⚙️ Setări</summary>
+<div class="row" id="ths"></div>
+<div class="row">Piese: <select id="ps" onchange="P.ps=this.value;sv();draw()"><option value="clasic">Clasice</option><option value="realist">Realiste</option><option value="colorat">Colorate</option><option value="rotund">Rotunde</option><option value="pixel">Pixel</option></select></div><div class="row"><label><input type="checkbox" id="snd"> Sunet</label><label><input type="checkbox" id="hnt"> Arată mutările posibile</label><label><input type="checkbox" id="cco"> Arată coordonatele</label></div><div class="row">Volum <input type="range" id="vol" min="0" max="100"></div><div class="row"><label><input type="checkbox" id="mus"> Muzică</label></div><div class="row">Volum muzică <input type="range" id="mvol" min="0" max="100"></div><div class="row">Viteza botului: <select id="bsp"><option value="0.3">Rapid</option><option value="1">Normal</option><option value="2">Lent</option></select></div></details></div>
+<div class="card"><details><summary>🎭 Poze de profil</summary><div class="row" id="avc"></div><div class="row avs" id="avs"></div></details></div>
+<div class="card note">Online cu prietenii: în curând 🚧</div>
+</div></main>
+<script>window.onerror=function(m,s,l,c){document.body.insertAdjacentHTML('beforeend','<pre style="position:fixed;left:8px;right:8px;bottom:8px;z-index:99;background:#fff;color:#b00;padding:10px;border:3px solid #b00;font-size:15px;white-space:pre-wrap">EROARE: '+m+' (linia '+l+', col '+c+')\n'+navigator.userAgent+'</pre>')};</script>
+<script>
+(function(){const B={p:'....##....|...####...|...####...|....##....|...####...|..######..|...####...|...####...|..######..|.########.',r:'##.####.##|##########|.########.|..######..|..######..|..######..|..######..|.########.|##########|##########',n:'...#.#....|..#####...|.######...|#######...|######....|..####....|..#####...|.#######..|..#######.|.#########',b:'....##....|...####...|..######..|..##.###..|..######..|...####...|....##....|...####...|..######..|.########.',q:'#...##...#|##.####.##|##########|.########.|..######..|..######..|...####...|...####...|..######..|.########.',k:'....##....|..######..|....##....|..######..|.########.|.########.|..######..|...####...|..######..|.########.'};let h='';for(const k in B){let d='';B[k].split('|').forEach((r,y)=>[...r].forEach((c,x)=>{if(c==='#')d+='M'+x+' '+y+'h1v1h-1z'}));h+='<symbol id="x'+k+'" viewBox="0 0 10 10"><path d="'+d+'"/></symbol>'}document.querySelector('defs').insertAdjacentHTML('beforeend',h)})();
+const G={p:'♟\uFE0E',n:'♞\uFE0E',b:'♝\uFE0E',r:'♜\uFE0E',q:'♛\uFE0E',k:'♚\uFE0E'};
+const THS=[['verde','#76b852'],['albastru','#5b8bc4'],['roz','#d9769b'],['portocaliu','#e39a3b'],['lemn','#b58863'],['mov','#8a6bbf'],['negru','#555'],['cafeniu','#8b5a3c'],['turcoaz','#3a9bb0'],['rosu','#c0504d'],['gri','#8a8f98']];
+const AVS=[['🙂',0],['😎',0],['😀',0],['🦊',100],['🐼',100],['🐯',150],['🦁',150],['🐺',200],['🦉',200],['🐧',200],['🦄',300],['🐉',300],['🤖',300],['🥷',400],['🧙',400],['👑',500],['🏆',800]];
+let P={name:'',av:'🙂',coins:0,wins:0,own:['🙂','😎'],th:'verde',snd:1,hnt:1,mode:'bot',lvl:2};
+try{Object.assign(P,JSON.parse(localStorage.getItem('sah')||'{}'))}catch(e){}
+const sv=()=>{try{localStorage.setItem('sah',JSON.stringify(P))}catch(e){}};
+const $=id=>document.getElementById(id);
+let ac;function snd(f,d=.09){if(!P.snd)return;try{ac=ac||new AudioContext();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;g.gain.value=.15*((P.vol??60)/60);o.connect(g);g.connect(ac.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.stop(ac.currentTime+d)}catch(e){}}
+const isW=p=>p>='A'&&p<='Z';
+const DN=[[-1,-1],[-1,1],[1,-1],[1,1]],DR=[[-1,0],[1,0],[0,-1],[0,1]],DK=[[-2,-1],[-2,1],[2,-1],[2,1],[-1,-2],[-1,2],[1,-2],[1,2]];
+const ok=(r,c)=>r>=0&&r<8&&c>=0&&c<8;
+function att(b,sq,w){const r=sq>>3,c=sq&7,pr=w?r+1:r-1;
+for(const dc of[-1,1])if(ok(pr,c+dc)&&b[pr*8+c+dc]===(w?'P':'p'))return 1;
+for(const[a,d]of DK)if(ok(r+a,c+d)&&b[(r+a)*8+c+d]===(w?'N':'n'))return 1;
+for(const[a,d]of[...DN,...DR])if(ok(r+a,c+d)&&b[(r+a)*8+c+d]===(w?'K':'k'))return 1;
+for(const[ds,ps]of[[DN,'bq'],[DR,'rq']])for(const[a,d]of ds){let rr=r+a,cc=c+d;while(ok(rr,cc)){const p=b[rr*8+cc];if(p){if(isW(p)===w&&ps.includes(p.toLowerCase()))return 1;break}rr+=a;cc+=d}}return 0}
+function gen(s){const b=s.b,w=s.t==='w',m=[];
+for(let i=0;i<64;i++){const p=b[i];if(!p||isW(p)!==w)continue;const t=p.toLowerCase(),r=i>>3,c=i&7,add=(to,x)=>m.push({f:i,t:to,...x});
+if(t==='p'){const d=w?-1:1,r1=r+d,pr=r1===(w?0:7);if(!ok(r1,c))continue;
+if(!b[r1*8+c]){add(r1*8+c,{pr});if(r===(w?6:1)&&!b[(r+2*d)*8+c])add((r+2*d)*8+c,{dp:1})}
+for(const dc of[-1,1]){const cc=c+dc;if(!ok(r1,cc))continue;const to=r1*8+cc,q=b[to];if(q&&isW(q)!==w)add(to,{pr,cap:1});else if(to===s.ep)add(to,{ep:1,cap:1})}}
+else if(t==='n'||t==='k'){for(const[a,d]of t==='n'?DK:[...DN,...DR]){if(!ok(r+a,c+d))continue;const to=(r+a)*8+c+d,q=b[to];if(!q||isW(q)!==w)add(to,{cap:!!q})}
+if(t==='k'){const o=w?56:0,K=w?'K':'k',Q=w?'Q':'q',R=w?'R':'r';
+if(s.c[K]&&i===o+4&&!b[o+5]&&!b[o+6]&&b[o+7]===R&&![4,5,6].some(x=>att(b,o+x,!w)))add(o+6,{cs:'K'});
+if(s.c[Q]&&i===o+4&&!b[o+3]&&!b[o+2]&&!b[o+1]&&b[o]===R&&![4,3,2].some(x=>att(b,o+x,!w)))add(o+2,{cs:'Q'})}}
+else{for(const[a,d]of t==='b'?DN:t==='r'?DR:[...DN,...DR]){let rr=r+a,cc=c+d;while(ok(rr,cc)){const to=rr*8+cc,q=b[to];if(!q)add(to,{});else{if(isW(q)!==w)add(to,{cap:1});break}rr+=a;cc+=d}}}}
+return m}
+const RM={63:['K'],56:['Q'],60:['K','Q'],7:['k'],0:['q'],4:['k','q']};
+function ap(s,m){const b=s.b.slice(),p=b[m.f],w=isW(p),c={...s.c};
+b[m.t]=m.pr?(w?'Q':'q'):p;b[m.f]='';if(m.ep)b[m.t+(w?8:-8)]='';
+if(m.cs){const o=w?56:0;if(m.cs==='K'){b[o+5]=b[o+7];b[o+7]=''}else{b[o+3]=b[o];b[o]=''}}
+for(const x of[m.f,m.t])(RM[x]||[]).forEach(k=>c[k]=0);
+return{b,t:w?'b':'w',c,ep:m.dp?(m.f+m.t)/2:-1}}
+const inChk=s=>att(s.b,s.b.indexOf(s.t==='w'?'K':'k'),s.t!=='w');
+const legal=s=>gen(s).filter(m=>{const n=ap(s,m);return!att(n.b,n.b.indexOf(s.t==='w'?'K':'k'),s.t!=='w')});
+const VAL={p:100,n:320,b:330,r:500,q:900,k:0};
+function ev(s){let v=0;for(let i=0;i<64;i++){const p=s.b[i];if(!p)continue;const t=p.toLowerCase(),r=i>>3,c=i&7;let x=VAL[t]+(t==='n'||t==='b'||t==='p'?(7-Math.abs(2*c-7)-Math.abs(2*r-7)+7)*1.5:0);v+=isW(p)?x:-x}return v}
+function nm(s,d,a,b){const ms=legal(s);if(!ms.length)return inChk(s)?-99999-d:0;if(!d)return ev(s)*(s.t==='w'?1:-1);
+ms.sort((x,y)=>(y.cap?1:0)-(x.cap?1:0));
+for(const m of ms){const v=-nm(ap(s,m),d-1,-b,-a);if(v>=b)return b;if(v>a)a=v}return a}
+function botMove(){const ms=legal(S);if(!ms.length)return;const L=+P.lvl,nz=[0,90,12,0][L];let best=null,bv=-1e9;
+for(const m of ms){const v=-nm(ap(S,m),L,-1e6,1e6)+Math.random()*nz;if(v>bv){bv=v;best=m}}play(best)}
+let S,sel=-1,tg=[],last=null,over=false,T=null;
+let GM='chess',DB=[],DT='w',DSel=-1,DMs=[],DLast=null,DOver=false,DEnd='',DCont=-1;const D4=[[-1,-1],[-1,1],[1,-1],[1,1]];
+const dw=p=>p.toLowerCase()==='w';const BD=()=>(1500+Math.random()*2000)*(P.bs||1);
+function dInit(){DB=Array(64).fill('');for(let r=0;r<8;r++)for(let c=0;c<8;c++)if((r+c)%2){if(r<3)DB[r*8+c]='b';else if(r>4)DB[r*8+c]='w'}DT='w';DSel=-1;DOver=false;DLast=null;DCont=-1;DMs=dGen(DB,true)}
+function dCaps(b,w,i,k,caps,path){const out=[];for(const[dr,dc]of D4){let r=(i>>3)+dr,c=(i&7)+dc;if(k)while(ok(r,c)&&!b[r*8+c]){r+=dr;c+=dc}if(!ok(r,c))continue;const q=b[r*8+c];if(!q||dw(q)===w||caps.includes(r*8+c))continue;const cp=[...caps,r*8+c],a=[],bt=[];let lr=r+dr,lc=c+dc;while(ok(lr,lc)&&!b[lr*8+lc]){const to=lr*8+lc,nk=k||(lr===(w?0:7)),np=[...path,to];bt.push({path:np,caps:cp,k:nk});if(!k)break;lr+=dr;lc+=dc}out.push(...(a.length?a:bt))}return out}
+function dGen(b,w){const caps=[];for(let i=0;i<64;i++){const p=b[i];if(!p||dw(p)!==w)continue;const bb=b.slice();bb[i]='';caps.push(...dCaps(bb,w,i,p===p.toUpperCase(),[],[i]))}const m=[...caps];for(let i=0;i<64;i++){const p=b[i];if(!p||dw(p)!==w)continue;const k=p===p.toUpperCase();for(const[dr,dc]of D4){let r=(i>>3)+dr,c=(i&7)+dc;while(ok(r,c)&&!b[r*8+c]){m.push({path:[i,r*8+c],caps:[],k:k||r===(w?0:7)});if(!k)break;r+=dr;c+=dc}}}return m}
+function dAp(b,m){const bb=b.slice(),p=bb[m.path[0]];bb[m.path[0]]='';m.caps.forEach(x=>bb[x]='');bb[m.path[m.path.length-1]]=m.k?p.toUpperCase():p;return bb}
+function dEv(b){let v=0;for(let i=0;i<64;i++){const p=b[i];if(!p)continue;const w=dw(p),x=p===p.toUpperCase()?320:100+(w?7-(i>>3):(i>>3))*3;v+=w?x:-x}return v}
+function dNm(b,w,d,a,be){const ms=dGen(b,w);if(!ms.length)return -9999-d;if(!d)return dEv(b)*(w?1:-1);for(const m of ms){const v=-dNm(dAp(b,m),!w,d-1,-be,-a);if(v>=be)return be;if(v>a)a=v}return a}
+function dBot(){if(GM!=='dame'||DT!=='b'||DOver)return;const L=+P.lvl,d=[1,3,5][L-1];let best=null,bv=-1e9;for(const m of DMs){const v=-dNm(dAp(DB,m),true,d-1,-1e6,1e6)+(L===1?Math.random()*60:0);if(v>bv){bv=v;best=m}}if(best)dPlay(best)}
+function dPlay(m){DB=dAp(DB,m);DLast=m;DSel=-1;snd(m.caps.length?330:520);let ct=[];const to=m.path[m.path.length-1];if(m.caps.length){const p=DB[to],bb=DB.slice();bb[to]='';ct=dCaps(bb,DT==='w',to,p===p.toUpperCase(),[],[to])}if(ct.length){DCont=to;DMs=ct}else{DCont=-1;DT=DT==='w'?'b':'w';DMs=dGen(DB,DT==='w')}if(!DMs.length){DOver=true;const wn=DT==='b';snd(880,.4);if(P.mode==='bot'&&wn){P.coins+=50;P.wins++;sv()}DEnd=(wn?'Albul a câștigat!':'Negrul a câștigat!')+(P.mode==='bot'&&wn?' +50 🪙':'')}draw();if(!DOver&&P.mode==='bot'&&DT==='b')setTimeout(dBot,BD())}
+function dClick(i){if(DOver||(P.mode==='bot'&&DT==='b'))return;const m=DMs.find(x=>x.path[0]===DSel&&x.path[x.path.length-1]===i);if(m)return dPlay(m);if(DMs.some(x=>x.path[0]===i)){DSel=i;snd(700,.04)}else DSel=-1;draw()}
+function dEnd(){if(DCont<0||DOver)return;DCont=-1;DSel=-1;DT=DT==='w'?'b':'w';DMs=dGen(DB,DT==='w');if(!DMs.length){DOver=true;const wn=DT==='b';snd(880,.4);if(P.mode==='bot'&&wn){P.coins+=50;P.wins++;sv()}DEnd=(wn?'Albul a câștigat!':'Negrul a câștigat!')+(P.mode==='bot'&&wn?' +50 🪙':'')}draw();if(!DOver&&P.mode==='bot'&&DT==='b')setTimeout(dBot,BD())}function dStatus(){return DOver?DEnd:(DT==='w'?'Rândul albului':'Rândul negrului')}
+function drawD(B){$('nd').style.display=DCont>=0&&!DOver&&!(P.mode==='bot'&&DT==='b')?'':'none';const tg=DSel>=0?DMs.filter(m=>m.path[0]===DSel).map(m=>m.path[m.path.length-1]):[];for(let i=0;i<64;i++){const p=DB[i],d=document.createElement('div');d.className='sq '+(((i>>3)+(i&7))%2?'d':'l')+(i===DSel?' sel':'')+(tg.includes(i)&&P.hnt?' tg':'');if(p)d.innerHTML='<i class="ck '+(dw(p)?'cw':'cb')+'">'+(p===p.toUpperCase()?'♛':'')+'</i>';d.onclick=()=>dClick(i);B.appendChild(d)}}
+function setGM(g){GM=g;P.gm=g;sv();$('gc').className=g==='chess'?'pr':'';$('gd').className=g==='dame'?'pr':'';newGame()}
+function newGame(){if(!T){P.mode=$('mode').value;P.lvl=$('lvl').value}$('nx').style.display='none';$('nd').style.display='none';sv();if(GM==='dame'){dInit();if(P.mode==='bot'&&false)0;return draw()}const r='rnbqkbnr';
+S={b:[...r,...'pppppppp',...Array(32).fill(''),...'PPPPPPPP',...r.toUpperCase()],t:'w',c:{K:1,Q:1,k:1,q:1},ep:-1};sel=-1;tg=[];last=null;over=false;draw()}
+function play(m){const cap=S.b[m.t]||m.ep;S=ap(S,m);last=m;sel=-1;tg=[];snd(cap?330:520);
+const ms=legal(S);if(!ms.length){over=true;const mate=inChk(S);
+if(mate){const whiteWon=S.t==='b';snd(880,.4);
+if(P.mode==='bot'&&whiteWon){P.coins+=50;P.wins++;sv()}
+$('st').dataset.end=mate?(whiteWon?'Șah mat! Ai câștigat'+(P.mode==='bot'?' +50 🪙':'')+' 🎉':P.mode==='bot'?'Șah mat! A câștigat botul':'Șah mat! Câștigă negrul'):'';
+if(P.mode==='loc')$('st').dataset.end=whiteWon?'Șah mat! Câștigă albul 🎉':'Șah mat! Câștigă negrul 🎉'}
+else $('st').dataset.end='Pat – remiză';tourn(mate&&S.t==='b');}
+draw();if(!over&&P.mode==='bot'&&S.t==='b')setTimeout(botMove,BD())}
+function click(i){if(over||(P.mode==='bot'&&S.t==='b'))return;
+const m=tg.find(x=>x.t===i);if(sel>=0&&m)return play(m);
+const p=S.b[i];if(p&&isW(p)===(S.t==='w')){sel=i;tg=legal(S).filter(x=>x.f===i);snd(700,.04)}else{sel=-1;tg=[]}draw()}
+function draw(){const B=$('board');B.innerHTML='';if(GM==='dame')drawD(B);const chk=GM==='dame'?-1:inChk(S)?S.b.indexOf(S.t==='w'?'K':'k'):-1;
+for(let i=0;i<64&&GM!=='dame';i++){const p=S.b[i],t=tg.find(x=>x.t===i),d=document.createElement('div');
+d.className='sq '+(((i>>3)+(i&7))%2?'d':'l')+(i===sel?' sel':'')+(last&&(last.f===i||last.t===i)?' last':'')+(i===chk?' chk':'')+(t&&P.hnt?' tg'+(p?' cp':''):'');
+const lt=((i>>3)+(i&7))%2?'var(--l)':'var(--d)';d.innerHTML=(p?'<svg class="pc '+(isW(p)?'pw':'pk')+'" viewBox="0 0 45 45"><use href="#'+(P.ps==='pixel'?'x':'')+p.toLowerCase()+'"/></svg>':'')+(P.co!==0&&(i&7)===0?'<b class="co" style="left:2px;top:1px;color:'+lt+'">'+(8-(i>>3))+'</b>':'')+(P.co!==0&&(i>>3)===7?'<b class="co" style="right:2px;bottom:1px;color:'+lt+'">'+'abcdefgh'[i&7]+'</b>':'');d.onclick=()=>click(i);B.appendChild(d)}
+$('st').textContent=GM==='dame'?dStatus():over?$('st').dataset.end:(P.mode==='bot'&&S.t==='b'?'Rândul negrului':(S.t==='w'?'Rândul albului':'Rândul negrului')+(chk>=0?' – ȘAH!':''));
+$('av').style.background=P.avbg||'#e8f5e0';$('avc').innerHTML=['#e8f5e0','#ffe0e0','#e0ecff','#fff3c9','#efe0ff','#d9f7f2','#ffd6e8','#444'].map(c=>'<button class="th" data-c="'+c+'" style="background:'+c+'" onclick="setBg(this.dataset.c)"></button>').join('');$('st').textContent=X($('st').textContent,1);B.dataset.ps=P.ps||'clasic';$('tr').textContent=T?X('🏆 Turneu · Runda ',1)+T.r+'/4':'';$('av').textContent=P.av;$('co').textContent='🪙 '+P.coins+' · 🏆 '+P.wins;
+document.body.dataset.t=P.th;
+$('avs').innerHTML=AVS.map(([a,c])=>'<button onclick="pick(\''+a+'\','+c+')">'+a+'<small>'+(P.own.includes(a)?X(P.av===a?'activ':'al tău'):c+' 🪙')+'</small></button>').join('');
+$('ths').innerHTML=THS.map(([n,c])=>'<button class="th" style="background:'+c+(P.th===n?';outline:3px solid #333':'')+'" onclick="P.th=\''+n+'\';sv();draw()"></button>').join('')}
+function pick(a,c){if(P.own.includes(a))P.av=a;else if(P.coins>=c){P.coins-=c;P.own.push(a);P.av=a}else snd(200,.2);sv();draw()}
+$('nm').value=P.name;$('nm').oninput=e=>{P.name=e.target.value;sv()};
+$('snd').checked=!!P.snd;$('snd').onchange=e=>{P.snd=e.target.checked?1:0;sv()};
+$('hnt').checked=!!P.hnt;$('hnt').onchange=e=>{P.hnt=e.target.checked?1:0;sv();draw()};
+$('mode').value=P.mode;$('lvl').value=P.lvl;newGame();
+function startTour(){GM='chess';T={r:1};setRound();show('game')}function setRound(){P.mode='bot';P.lvl=[1,2,2,3][T.r-1];newGame()}function nextRound(){T.r++;setRound()}
+function tourn(w){if(!T)return;const e=$('st');if(!w){T=null;e.dataset.end+=' · Eliminat din turneu';return}if(T.r<4){$('nx').style.display='';e.dataset.end='Runda '+T.r+'/4 ✅'}else{P.coins+=300;sv();e.dataset.end='Ai câștigat turneul! +300 🪙 🏆';T=null}}
+function setUn(){const v=$('un1').value.trim();if(!v)return;P.name=v;$('nm').value=v;sv();$('un').style.display='none'}
+var LG=['ro','en','ru','es','fr','de','it','pt','tr'];
+var D=`Se încarcă…|Loading…|Загрузка…|Cargando…|Chargement…|Lädt…|Caricamento…|Carregando…|Yükleniyor…
+Bun venit!|Welcome!|Добро пожаловать!|¡Bienvenido!|Bienvenue !|Willkommen!|Benvenuto!|Bem-vindo!|Hoş geldin!
+Alege un nume de utilizator|Choose a username|Выбери имя пользователя|Elige un nombre de usuario|Choisis un nom d'utilisateur|Wähle einen Benutzernamen|Scegli un nome utente|Escolha um nome de usuário|Bir kullanıcı adı seç
+Continuă|Continue|Продолжить|Continuar|Continuer|Weiter|Continua|Continuar|Devam
+Numele tău|Your name|Твоё имя|Tu nombre|Ton nom|Dein Name|Il tuo nome|Seu nome|Adın
+Ex: MaestruSah|e.g. ChessMaster|напр. ШахМастер|ej. MaestroAjedrez|ex. MaîtreÉchecs|z. B. Schachmeister|es. MaestroScacchi|ex. MestreXadrez|örn. SatrançUstası
+Contra botului|Vs bot|Против бота|Contra el bot|Contre le bot|Gegen Bot|Contro il bot|Contra o bot|Bota karşı
+2 jucători (același telefon)|2 players (same phone)|2 игрока (один телефон)|2 jugadores (mismo móvil)|2 joueurs (même téléphone)|2 Spieler (ein Handy)|2 giocatori (stesso telefono)|2 jogadores (mesmo celular)|2 oyuncu (aynı telefon)
+Bot ușor|Easy bot|Лёгкий бот|Bot fácil|Bot facile|Leichter Bot|Bot facile|Bot fácil|Kolay bot
+Bot mediu|Medium bot|Средний бот|Bot medio|Bot moyen|Mittlerer Bot|Bot medio|Bot médio|Orta bot
+Bot greu|Hard bot|Сильный бот|Bot difícil|Bot difficile|Schwerer Bot|Bot difficile|Bot difícil|Zor bot
+▶ Joacă|▶ Play|▶ Играть|▶ Jugar|▶ Jouer|▶ Spielen|▶ Gioca|▶ Jogar|▶ Oyna
+Joc nou|New game|Новая игра|Nueva partida|Nouvelle partie|Neues Spiel|Nuova partita|Novo jogo|Yeni oyun
+← Meniu|← Menu|← Меню|← Menú|← Menu|← Menü|← Menu|← Menu|← Menü
+Runda următoare ▶|Next round ▶|Следующий раунд ▶|Siguiente ronda ▶|Tour suivant ▶|Nächste Runde ▶|Prossimo turno ▶|Próxima rodada ▶|Sonraki tur ▶
+⚙️ Setări|⚙️ Settings|⚙️ Настройки|⚙️ Ajustes|⚙️ Réglages|⚙️ Einstellungen|⚙️ Impostazioni|⚙️ Configurações|⚙️ Ayarlar
+Piese:|Pieces:|Фигуры:|Piezas:|Pièces :|Figuren:|Pezzi:|Peças:|Taşlar:
+Clasice|Classic|Классические|Clásicas|Classiques|Klassisch|Classici|Clássicas|Klasik
+Realiste|Realistic|Реалистичные|Realistas|Réalistes|Realistisch|Realistici|Realistas|Gerçekçi
+Colorate|Colorful|Цветные|Coloridas|Colorées|Bunt|Colorati|Coloridas|Renkli
+Sunet|Sound|Звук|Sonido|Son|Ton|Suono|Som|Ses
+Arată mutările posibile|Show possible moves|Показывать ходы|Mostrar jugadas posibles|Afficher les coups possibles|Mögliche Züge zeigen|Mostra le mosse possibili|Mostrar jogadas possíveis|Olası hamleleri göster
+🎭 Poze de profil|🎭 Profile pictures|🎭 Аватары|🎭 Fotos de perfil|🎭 Photos de profil|🎭 Profilbilder|🎭 Foto profilo|🎭 Fotos de perfil|🎭 Profil resimleri
+Alege cu cine joci și apasă Joacă|Choose who to play and press Play|Выбери соперника и нажми «Играть»|Elige con quién jugar y pulsa Jugar|Choisis ton adversaire et appuie sur Jouer|Wähle den Gegner und drücke Spielen|Scegli con chi giocare e premi Gioca|Escolha com quem jogar e toque em Jogar|Kiminle oynayacağını seç ve Oyna'ya bas
+🏆 Turneu (4 runde, premiu 300 🪙)|🏆 Tournament (4 rounds, prize 300 🪙)|🏆 Турнир (4 раунда, приз 300 🪙)|🏆 Torneo (4 rondas, premio 300 🪙)|🏆 Tournoi (4 tours, prix 300 🪙)|🏆 Turnier (4 Runden, Preis 300 🪙)|🏆 Torneo (4 turni, premio 300 🪙)|🏆 Torneio (4 rodadas, prêmio 300 🪙)|🏆 Turnuva (4 tur, ödül 300 🪙)
+Câștigi 50 🪙 la fiecare victorie contra botului.|You earn 50 🪙 for each win against the bot.|50 🪙 за каждую победу над ботом.|Ganas 50 🪙 por cada victoria contra el bot.|Tu gagnes 50 🪙 par victoire contre le bot.|50 🪙 für jeden Sieg gegen den Bot.|Ottieni 50 🪙 per ogni vittoria contro il bot.|Você ganha 50 🪙 por vitória contra o bot.|Bota karşı her galibiyette 50 🪙 kazanırsın.
+Online cu prietenii: în curând 🚧|Online with friends: coming soon 🚧|Онлайн с друзьями: скоро 🚧|Online con amigos: próximamente 🚧|En ligne avec des amis : bientôt 🚧|Online mit Freunden: bald 🚧|Online con amici: presto 🚧|Online com amigos: em breve 🚧|Arkadaşlarla online: yakında 🚧
+Rândul albului|White to move|Ход белых|Turno de las blancas|Aux blancs de jouer|Weiß ist am Zug|Tocca al bianco|Vez das brancas|Beyazın sırası
+Rândul negrului|Black to move|Ход чёрных|Turno de las negras|Aux noirs de jouer|Schwarz ist am Zug|Tocca al nero|Vez das pretas|Siyahın sırası
+– ȘAH!|– CHECK!|– ШАХ!|– ¡JAQUE!|– ÉCHEC !|– SCHACH!|– SCACCO!|– XEQUE!|– ŞAH!
+Șah mat! Ai câștigat|Checkmate! You won|Мат! Ты выиграл|¡Jaque mate! Ganaste|Échec et mat ! Tu as gagné|Schachmatt! Du hast gewonnen|Scacco matto! Hai vinto|Xeque-mate! Você ganhou|Şah mat! Kazandın
+Șah mat! A câștigat botul|Checkmate! The bot won|Мат! Победил бот|¡Jaque mate! Ganó el bot|Échec et mat ! Le bot a gagné|Schachmatt! Der Bot hat gewonnen|Scacco matto! Ha vinto il bot|Xeque-mate! O bot ganhou|Şah mat! Bot kazandı
+Șah mat! Câștigă albul|Checkmate! White wins|Мат! Побеждают белые|¡Jaque mate! Ganan las blancas|Échec et mat ! Les blancs gagnent|Schachmatt! Weiß gewinnt|Scacco matto! Vince il bianco|Xeque-mate! Brancas vencem|Şah mat! Beyaz kazandı
+Șah mat! Câștigă negrul|Checkmate! Black wins|Мат! Побеждают чёрные|¡Jaque mate! Ganan las negras|Échec et mat ! Les noirs gagnent|Schachmatt! Schwarz gewinnt|Scacco matto! Vince il nero|Xeque-mate! Pretas vencem|Şah mat! Siyah kazandı
+Pat – remiză|Stalemate – draw|Пат – ничья|Tablas por ahogado|Pat – nulle|Patt – Remis|Stallo – patta|Empate por afogamento|Pat – berabere
+· Eliminat din turneu|· Eliminated from the tournament|· Вылет из турнира|· Eliminado del torneo|· Éliminé du tournoi|· Aus dem Turnier ausgeschieden|· Eliminato dal torneo|· Eliminado do torneio|· Turnuvadan elendin
+Ai câștigat turneul!|You won the tournament!|Ты выиграл турнир!|¡Ganaste el torneo!|Tu as gagné le tournoi !|Du hast das Turnier gewonnen!|Hai vinto il torneo!|Você venceu o torneio!|Turnuvayı kazandın!
+🏆 Turneu|🏆 Tournament|🏆 Турнир|🏆 Torneo|🏆 Tournoi|🏆 Turnier|🏆 Torneo|🏆 Torneio|🏆 Turnuva
+Runda |Round |Раунд |Ronda |Tour |Runde |Turno |Rodada |Tur 
+activ|active|выбран|activa|actif|aktiv|attivo|ativo|aktif
+al tău|yours|твой|tuyo|à toi|deins|tuo|seu|senin
+♟️ Șah|♟️ Chess|♟️ Шахматы|♟️ Ajedrez|♟️ Échecs|♟️ Schach|♟️ Scacchi|♟️ Xadrez|♟️ Satranç
+⚪ Dame|⚪ Checkers|⚪ Шашки|⚪ Damas|⚪ Dames|⚪ Dame|⚪ Dama|⚪ Damas|⚪ Dama
+Albul a câștigat!|White won!|Белые победили!|¡Ganan las blancas!|Les blancs gagnent !|Weiß gewinnt!|Vince il bianco!|Brancas vencem!|Beyaz kazandı!
+Negrul a câștigat!|Black won!|Чёрные победили!|¡Ganan las negras!|Les noirs gagnent !|Schwarz gewinnt!|Vince il nero!|Pretas vencem!|Siyah kazandı!
+Rotunde|Round|Круглые|Redondas|Arrondies|Rund|Rotondi|Arredondadas|Yuvarlak
+Termină rândul|End turn|Закончить ход|Terminar turno|Finir le tour|Zug beenden|Termina turno|Encerrar vez|Sırayı bitir`.split('\n').map(l=>l.split('|'));
+var DS=D.slice().sort((a,b)=>b[0].length-a[0].length);
+function X(s,sub){if(!LG||!DS)return s;const x=P.lg==='x'&&P.cx,i=LG.indexOf(P.lg||'ro');if(i<1&&!x)return s;const g=d=>x?(P.cx[D.indexOf(d)]||d[0]):(d[i]||d[1]||d[0]);const t=s.trim(),r=D.find(d=>d[0]===t);if(r)return s.replace(t,g(r));if(!sub)return s;for(const d of DS)if(d[0].length>=6&&s.includes(d[0]))s=s.split(d[0]).join(g(d));return s}
+function loc(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){const p=n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE')continue;if(n._o===undefined)n._o=n.nodeValue;n.nodeValue=X(n._o)}document.querySelectorAll('[placeholder]').forEach(e=>{if(e._o===undefined)e._o=e.getAttribute('placeholder');e.placeholder=X(e._o)})}
+const CH=`🎯 Scopul jocului: dai șah mat. Regele adversarului e atacat și nu mai are nicio mutare de scăpare. În schemă, regina atacă regele negru, iar regele alb o apără, deci e șah mat.|🎯 The goal: checkmate. The enemy king is attacked and has no escape. In the diagram the queen attacks the black king and the white king protects her, so it is checkmate.
+♟️ Pionul merge înainte un pătrat, iar din poziția de start poate merge două. Capturează doar pe diagonală (cercurile). Dacă ajunge pe ultimul rând, devine regină.|♟️ The pawn moves forward one square, or two from its starting square. It captures only diagonally (the rings). If it reaches the last row it becomes a queen.
+♜ Tura merge drept, oricâte pătrate, pe linii și coloane, cât timp drumul e liber. Punctele arată unde poate ajunge.|♜ The rook moves in straight lines, any number of squares, along rows and columns while the way is clear. The dots show where it can go.
+♝ Nebunul merge pe diagonale, oricâte pătrate. Rămâne mereu pe aceeași culoare de pătrate, deci cei doi nebuni ai tăi acoperă culori diferite.|♝ The bishop moves diagonally, any number of squares. It always stays on the same color, so your two bishops cover different colors.
+♞ Calul sare în formă de L: două pătrate într-o direcție și unul într-o parte. E singura piesă care poate sări peste alte piese.|♞ The knight jumps in an L shape: two squares one way and one to the side. It is the only piece that can jump over other pieces.
+♛ Regina e cea mai puternică piesă. Merge ca tura și ca nebunul la un loc, pe orice linie sau diagonală.|♛ The queen is the strongest piece. She moves like a rook and a bishop combined, along any line or diagonal.
+♚ Regele merge un singur pătrat în orice direcție. Nu are voie să intre într-un pătrat unde e atacat. Dacă e atacat, spunem că e șah.|♚ The king moves one square in any direction. He may not step onto a square where he is attacked. When he is attacked, it is called check.
+🏰 Rocada: regele merge două pătrate spre tură, iar tura sare peste el. Se poate face doar dacă nici regele, nici tura n-au mutat și între ei nu sunt piese.|🏰 Castling: the king moves two squares toward the rook and the rook jumps over him. It is allowed only if neither has moved and there are no pieces between them.
+💡 Sfat: stăpânește centrul. Pătratele din mijloc (d4, e4, d5, e5) dau pieselor cele mai multe mutări. Scoate piesele la joc și nu lăsa nimic neprotejat.|💡 Tip: control the center. The middle squares (d4, e4, d5, e5) give your pieces the most moves. Develop your pieces and leave nothing unprotected.`.split('\n');
+const DM=`🎯 Scopul: capturezi toate piesele adversarului sau le blochezi ca să nu mai poată muta. Fiecare jucător începe cu 12 piese pe pătratele închise.|🎯 The goal: capture all enemy pieces or block them so they cannot move. Each player starts with 12 pieces on the dark squares.
+➡️ O piesă merge un pătrat pe diagonală, pe pătratele închise. În jocul ăsta poți merge și înapoi, chiar dacă ai o captură posibilă.|➡️ A piece moves one square diagonally on the dark squares. In this game you can also move backward, even if a capture is available.
+⚔️ Captura: sari peste o piesă a adversarului într-un pătrat liber de după ea (cercul). Piesa sărită dispare.|⚔️ Capture: jump over an enemy piece into the empty square behind it (the ring). The jumped piece is removed.
+🔁 Captură în lanț: dacă după săritură aceeași piesă mai poate captura, rândul tău continuă. Sari din nou sau apasă Termină rândul.|🔁 Chain capture: if after a jump the same piece can capture again, your turn continues. Jump again or press End turn.
+👑 Dama: când ajungi pe ultimul rând, piesa devine damă ♛. Ea merge pe diagonală oricâte pătrate, ca nebunul de la șah.|👑 The king: when you reach the last row, your piece becomes a king ♛. It moves diagonally any number of squares, like the bishop in chess.
+💡 Sfat: ține piesele grupate și păstrează cât poți rândul din spate (galben), ca adversarul să nu ajungă damă.|💡 Tip: keep your pieces together and keep your back row (yellow) as long as you can, so the enemy cannot get a king.`.split('\n');
+const SQ=s=>(8-+s[1])*8+s.charCodeAt(0)-97;
+const NM=s=>String.fromCharCode(97+(s&7))+(8-(s>>3));
+function tgt(t,s){const r=8-+s[1],c=s.charCodeAt(0)-97,o=[];const add=(rr,cc)=>{if(ok(rr,cc))o.push(NM(rr*8+cc))};
+if(t==='n')DK.forEach(([a,b])=>add(r+a,c+b));
+else if(t==='k')[...DN,...DR].forEach(([a,b])=>add(r+a,c+b));
+else if(t==='p'){add(r-1,c);add(r-2,c)}
+else if(t==='m')DN.forEach(([a,b])=>add(r+a,c+b));
+else{const ds=t==='r'?DR:(t==='b'||t==='M')?DN:[...DN,...DR];ds.forEach(([a,b])=>{let rr=r+a,cc=c+b;while(ok(rr,cc)){add(rr,cc);rr+=a;cc+=b}})}
+return o}
+const DG={chess:[
+{p:[['k','b','h8'],['q','w','g7'],['k','w','f6']],h:['h8']},
+{p:[['p','w','e2'],['p','b','d3'],['p','b','f3']],m:0,c:['d3','f3']},
+{p:[['r','w','d4']],m:0},
+{p:[['b','w','c3']],m:0},
+{p:[['n','w','d4']],m:0},
+{p:[['q','w','d4']],m:0},
+{p:[['k','w','e4']],m:0},
+{p:[['k','w','e1'],['r','w','h1']],t:['g1','f1'],h:['e1']},
+{p:[],h:['d4','e4','d5','e5']}],
+dame:[
+{init:1},
+{p:[['m','w','c3']],m:0},
+{p:[['m','w','c3'],['m','b','d4']],c:['e5']},
+{p:[['m','w','c3'],['m','b','d4'],['m','b','f6']],c:['e5','g7']},
+{p:[['M','w','d4']],m:0},
+{p:[['m','w','a1'],['m','w','c1'],['m','w','e1'],['m','w','g1']],h:['a1','c1','e1','g1']}]};
+function mini(sp){const pc={};(sp.p||[]).forEach(x=>pc[SQ(x[2])]=x);if(sp.init)for(let i=0;i<64;i++){const r=i>>3;if((r+(i&7))%2&&(r<3||r>4))pc[i]=['m',r<3?'b':'w',NM(i)]}
+const t=new Set((sp.m!==undefined?tgt(sp.p[sp.m][0],sp.p[sp.m][2]):[]).concat(sp.t||[]).map(SQ)),c=new Set((sp.c||[]).map(SQ)),h=new Set((sp.h||[]).map(SQ));
+let o='<div data-ps="'+(P.ps||'clasic')+'" style="display:grid;grid-template-columns:repeat(8,28px);width:224px;margin:10px auto;border-radius:4px;overflow:hidden">';
+for(let i=0;i<64;i++){const x=pc[i],cl='sq '+(((i>>3)+(i&7))%2?'d':'l')+(h.has(i)?' sel':'')+(c.has(i)?' tg cp':t.has(i)?' tg':'');
+let g='';if(x){const w=x[1]==='w';g=(x[0]==='m'||x[0]==='M')?'<i class="ck '+(w?'cw':'cb')+'" style="width:20px;height:20px;font-size:12px">'+(x[0]==='M'?'♛':'')+'</i>':'<svg class="pc '+(w?'pw':'pk')+'" style="width:25px;height:25px" viewBox="0 0 45 45"><use href="#'+(P.ps==='pixel'?'x':'')+x[0]+'"/></svg>'}
+o+='<div class="'+cl+'" style="width:28px;height:28px">'+g+'</div>'}
+return o+'</div>'}
+const EX=`📚 Învață să joci|📚 Learn to play
+Exersează|Practice
+Volum|Volume
+Viteza botului:|Bot speed:
+Rapid|Fast
+Normal|Normal
+Lent|Slow
+Arată coordonatele|Show coordinates
+🔐 Intră cu Google|🔐 Sign in with Google
+Muzică|Music
+Volum muzică|Music volume`.split('\n');
+D.push(...CH.concat(DM,EX).map(l=>l.split('|')));
+const LS={chess:CH.map(l=>l.split('|')[0]),dame:DM.map(l=>l.split('|')[0])};let LI=0;
+function lstep(d){const a=LS[GM];LI=d===0?0:Math.max(0,Math.min(a.length-1,LI+d));$('lt').textContent=X('📚 Învață să joci')+' · '+X(GM==='chess'?'♟️ Șah':'⚪ Dame');$('lx').textContent=X(a[LI]);$('lm').innerHTML=mini(DG[GM][LI]);$('lc').textContent=(LI+1)+' / '+a.length}
+function practice(){P.mode='bot';P.lvl=1;P.hnt=1;$('mode').value='bot';$('lvl').value='1';$('hnt').checked=true;T=null;newGame();show('game')}
+const FBC=null; /* PASTE FIREBASE CONFIG HERE, e.g. const FBC={apiKey:"...",authDomain:"...",projectId:"...",appId:"..."}; */
+let fbAuth=null,fbM=null;
+(async()=>{if(!FBC)return;try{const a=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js');fbM=await import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js');fbAuth=fbM.getAuth(a.initializeApp(FBC));$('gl').style.display='';fbM.onAuthStateChanged(fbAuth,u=>{$('gl').textContent=u?'🚪 '+(u.displayName||'')+' ✕':X('🔐 Intră cu Google');if(u&&!P.name){P.name=u.displayName||'';$('nm').value=P.name;sv()}})}catch(e){}})();
+async function gLogin(){if(!fbAuth)return;try{if(fbAuth.currentUser)await fbM.signOut(fbAuth);else await fbM.signInWithPopup(fbAuth,new fbM.GoogleAuthProvider())}catch(e){}}
+let mAc=null,mG=null,mT=null;const MF=[261.63,293.66,329.63,392,440,523.25,587.33,659.25];
+function mV(){if(mG)mG.gain.value=1.2*((P.mvol??50)/100)}
+function mStop(){clearTimeout(mT);mT=null;if(mG)mG.gain.value=0}
+function mStart(){if(P.mus===0)return;try{if(!window.mSil){window.mSil=new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA=');mSil.loop=true;mSil.play().catch(()=>{})}mAc=mAc||new (window.AudioContext||window.webkitAudioContext)();if(mAc.state!=='running')mAc.resume();if(!mG){mG=mAc.createGain();const dl=mAc.createDelay(1),fb=mAc.createGain();dl.delayTime.value=.42;fb.gain.value=.45;mG.connect(mAc.destination);mG.connect(dl);dl.connect(fb);fb.connect(dl);dl.connect(mAc.destination)}mV();if(!mT)mNote()}catch(e){}}
+function mTone(f,t,v,d,pad){const g=mAc.createGain(),a=pad?1.6:.03;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+a);g.gain.exponentialRampToValueAtTime(.001,t+d);let out=g;if(pad){const fl=mAc.createBiquadFilter();fl.type='lowpass';fl.frequency.value=700;fl.Q.value=.6;fl.connect(g);out=fl}[-7,7].forEach(c=>{const o=mAc.createOscillator();o.type=pad?'sawtooth':'sine';o.frequency.value=f;o.detune.value=pad?c:0;o.connect(out);o.start(t);o.stop(t+d+.1)});g.connect(mG)}
+function mNote(){mT=setTimeout(mNote,1400+Math.random()*2200);if(P.mus===0||!mAc||mAc.state!=='running')return;const t=mAc.currentTime,f=MF[Math.floor(Math.random()*MF.length)];mTone(f/2,t,.16,7,1);if(Math.random()<.35)mTone(f*2,t,.12,2.5)}
+function setBg(c){P.avbg=c;sv();draw()}
+var SM=null;(async()=>{try{SM=await claude.use('sample');if(SM)$('lgx').style.display=''}catch(e){}})();
+async function otherLg(){const n=prompt('Language?');if(!n){$('lg').value=P.lg;return}$('lg').disabled=true;try{const r=await SM.json('Translate these UI lines from Romanian into '+n+'. Keep emojis, symbols, punctuation, spaces and numbers exactly. Return ONLY a JSON array of strings with the same length and order as this input array: '+JSON.stringify(D.map(d=>d[0])));if(Array.isArray(r)&&r.length===D.length){P.cx=r;P.lg='x';sv();draw();loc()}else $('lg').value=P.lg}catch(e){$('lg').value=P.lg}$('lg').disabled=false}
+function setLg(v){if(v==='x')return otherLg();P.lg=v;sv();document.documentElement.lang=v;draw();loc()}
+if(!P.lg){const n=(navigator.language||'ro').slice(0,2);P.lg=LG.includes(n)?n:'en'}
+$('lg').value=P.lg;document.documentElement.lang=P.lg;setGM(P.gm||'chess');draw();loc();
+$('cco').checked=P.co!==0;$('cco').onchange=e=>{P.co=e.target.checked?1:0;sv();draw()};$('vol').value=P.vol??60;$('vol').oninput=e=>{P.vol=+e.target.value;sv()};$('bsp').value=P.bs||1;$('bsp').onchange=e=>{P.bs=+e.target.value;sv()};
+$('mus').checked=P.mus!==0;$('mus').onchange=e=>{P.mus=e.target.checked?1:0;sv();P.mus?mStart():mStop()};$('mvol').value=P.mvol??50;$('mvol').oninput=e=>{P.mvol=+e.target.value;sv();mV()};['pointerdown','click','touchend','keydown'].forEach(ev=>document.addEventListener(ev,mStart));
+$('ps').value=P.ps||'clasic';
+function show(v){$('game').style.display=v==='game'?'block':'none';$('lobby').style.display=v==='lobby'?'block':'none';$('learn').style.display=v==='learn'?'block':'none';if(v==='learn')lstep(0)}
+requestAnimationFrame(()=>requestAnimationFrame(()=>{document.querySelector('#ld svg').style.transform='scale(1)';document.querySelector('#lb i').style.width='100%'}));
+setTimeout(()=>{if(!P.name)$('un').style.display='flex';const l=$('ld');l.style.opacity=0;setTimeout(()=>l.style.display='none',500)},3100);
+</script></body></html>
